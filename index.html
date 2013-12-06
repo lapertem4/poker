@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>扑克美食随机抽</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	var $$ = function (id) {
+		return document.getElementById(id);
+	}
+	
+	var getStyle = function (obj, attr) {
+		if (obj.currentStyle) {
+			return obj.currentStyle[attr];
+		} else {
+			return getComputedStyle(obj, false)[attr];
+		}
+	}
+	
+	var move = function (obj, json, fn) {
+		var timer = null;
+		var speed = 0;
+		var cus = 0;
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function () {
+			var attr;
+			var bStop = true;
+			for (attr in json){
+				cus = parseInt(getStyle(obj, attr));
+				speed = (json[attr] - cus)/8;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				if (Math.abs(cus - json[attr]) >= 1) {
+					bStop = false;
+				} else {}
+				obj.style[attr] = cus + speed + "px";
+			}
+			if (bStop == true) {
+				clearInterval(obj.timer);
+				obj.style[attr] = json[attr] + "px";
+				if (fn) {
+					fn();
+				}
+			}
+		}, 20);
+	}
+	
+	window.onload = function () {
+		var oUl = $$("ul01");
+		var aLi = oUl.getElementsByTagName("li");
+		var iMinzIndex = 2;
+		
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].style.left = [aLi[i].offsetLeft-"30"] +"px";
+			aLi[i].style.top = aLi[i].offsetTop+"px";
+		}
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].style.position = "absolute";
+			aLi[i].style.margin = 0;
+		}
+	
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].onmouseover = function () {
+				this.style.zIndex = iMinzIndex++;
+				move(this, {width: 170, height: 255, marginLeft: -50, marginTop: -50});
+			}
+	
+			aLi[i].onmouseout = function () {
+				move(this, {width: 100, height: 150, marginLeft: 0, marginTop: 0});
+			}
+		}
+	}
+</script>
+
+</head>
+
+<body>
+<div class="content">
+	<div class="content_1">
+		<div class="content_1_title"><p>美食扑克</p>
+		</div>
+		<div class="content_1_body">
+			<ul id="ul01" class="ul01">
+				<li><img src="images/1.jpg" alt="picture"></li>
+				<li><img src="images/2.jpg" alt="picture"></li>
+				<li><img src="images/3.jpg" alt="picture"></li>
+				<li><img src="images/4.jpg" alt="picture"></li>
+				<li><img src="images/5.jpg" alt="picture"></li>
+				<li><img src="images/6.jpg" alt="picture"></li>
+				<li><img src="images/7.jpg" alt="picture"></li>
+				<li><img src="images/8.jpg" alt="picture"></li>
+				<li><img src="images/9.jpg" alt="picture"></li>
+				<li><img src="images/10.jpg" alt="picture"></li>
+				<li><img src="images/11.jpg" alt="picture"></li>
+				<li><img src="images/12.jpg" alt="picture"></li>
+				<li><img src="images/13.jpg" alt="picture"></li>
+				<li><img src="images/14.jpg" alt="picture"></li>
+				<li><img src="images/15.jpg" alt="picture"></li>
+				<li><img src="images/16.jpg" alt="picture"></li>
+			</ul>
+			<div class="random_pick"><div class="ranclick"><p>抽一张看看今天吃什么</p></div>
+			</div>
+		</div>
+	</div>
+	<div class="content_2">
+		<div class="content_2_title"><p>描述</p>
+		</div>
+	</div>
+	<div class="content_3">
+		<div class="content_3_title"><p>美食统计</p>
+		</div>	
+	</div>
+	<div class="content_4">
+		<div class="content_4_title"><p>关于</p>
+		</div>	
+	</div>
+</div>
+</body>
+</html>
