@@ -18,7 +18,7 @@
 	position:relative;
 }
 .content .content_1 .content_1_title p {
-	position:absolute;
+	position:absolute; 
 	bottom:0px;
 	padding:0px;
 	margin:5px;
@@ -122,6 +122,19 @@
 	font-family:"»ªÎÄÏ¸ºÚ";
 	font-size:18px;
 	line-height:10px;
-	
 }
-	
+
+.content .content_2 .content_2_body .c2bpic {
+	height: 320px;
+	width: 550px;
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid #330066;
+}
+.content .content_2 .content_2_body .c2btext {
+	height: 200px;
+	width: 550px;
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid #6666FF;
+}
