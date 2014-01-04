@@ -62,7 +62,7 @@ function handleMouseWheel(event) {
 	var timer;
     var i = 0;
 	if (delta == 120) {
-		setTimeout("window.scrollBy(0,-600)",30);
+		window.scrollBy(0,-600);
 		}
 	else if (delta == -120) {
 		window.scrollBy(0,600);
@@ -72,14 +72,6 @@ function handleMouseWheel(event) {
 	//向上滚为120，向下滚为-120;
 }
 
-
-var timer;
-var y = 0;
-function scrollwindow(){
-    window.scroll(0,y);
-    y++;
-    timer=setTimeout("scrollwindow()",30);
-}
 
 EventUtil.addHandler(document, "mousewheel", handleMouseWheel);
 EventUtil.addHandler(document, "DOMMouseScroll", handleMouseWheel);
